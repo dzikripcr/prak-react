@@ -3,7 +3,7 @@ export default function Container({children}){
         <div>
             <h1>Pemrograman Framework Lanjutan</h1>
             <br/>
-                <img src="img/gambar.jpg" width="100%" alt="Upin Ipin" />
+                <img src="img/ironman.jpg" width="100%" alt="Upin Ipin" />
                 {children}
             <br/>
             <footer>
