@@ -1,5 +1,7 @@
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
 import PageHeader from "../components/PageHeader";
+import RecentOrders from "../components/RecentOrder";
+import SalesChart from "../components/SalesChart";
 
 export default function Dashboard() {
     return (
@@ -46,6 +48,8 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+            <RecentOrders/>
+            <SalesChart/>
         </div>
     );
 }
