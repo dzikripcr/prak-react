@@ -6,7 +6,11 @@ import SalesChart from "../components/SalesChart";
 export default function Dashboard() {
   return (
     <div id="dashboard-container">
-      <PageHeader title="Dashboard"/>
+      <PageHeader title="Dashboard" breadcrumb="Dashboard / Detail Dashboard">
+        <button id="children-button" className="bg-biru text-white px-4 py-2 rounded-lg mr-2">
+          Export
+        </button>
+      </PageHeader>
       <div
         id="dashboard-grid"
         className="p-5 grid sm:grid-cols-2 md:grid-cols-4 gap-4"

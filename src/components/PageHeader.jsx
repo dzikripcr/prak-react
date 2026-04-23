@@ -9,12 +9,12 @@ export default function PageHeader(props) {
                     {props.title}
                 </span>
                 <div id="breadcrumb-links" className="flex items-center font-medium space-x-2 mt-2">
-                    <span id="breadcrumb-home" className="text-gray-500">Dashboard</span>
-                    <span id="breadcrumb-separator" className="text-gray-500">/</span>
-                    <span id="breadcrumb-current" className="text-gray-500">Order List</span>
+                    <span id="breadcrumb" className="text-gray-500">{props.breadcrumb}</span>
                 </div>
             </div>
             <div id="action-button">
+                    {props.children}
+
                 <button id="add-button" className="bg-hijau text-white px-4 py-2 rounded-lg" onFocus={() => setShowModal(true)}>
 		                Cari Menu
 		            </button>
