@@ -1,43 +1,57 @@
-import { useState } from "react";
+import React, { Suspense, useState } from "react";
 import "./assets/tailwind.css";
-import Dashboard from "./pages/Dashboard";
-import Orders from "./pages/Orders";
-import Customers from "./pages/Customers";
+// import Dashboard from "./pages/Dashboard";
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+// import Orders from "./pages/Orders";
+const Orders = React.lazy(() => import("./pages/Orders"));
+// import Customers from "./pages/Customers";
+const Customers = React.lazy(() => import("./pages/Customers"));
 import { Route, Routes } from "react-router-dom";
-import NotFound from "./pages/NotFound";
-import Error400 from "./pages/error400";
-import Error401 from "./pages/error401";
-import Error403 from "./pages/error403";
-import MainLayout from "./layouts/MainLayout";
-import AuthLayout from "./layouts/AuthLayout";
+// import NotFound from "./pages/NotFound";
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+// import Error400 from "./pages/error400";
+const Error400 = React.lazy(() => import("./pages/error400"));
+// import Error401 from "./pages/error401";
+const Error401 = React.lazy(() => import("./pages/error401"));
+// import Error403 from "./pages/error403";
+const Error403 = React.lazy(() => import("./pages/error403"));
+// import MainLayout from "./layouts/MainLayout";
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
+// import AuthLayout from "./layouts/AuthLayout";
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
+
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Forgot from "./pages/auth/Forgot";
 
+// import Loading from "./components/Loading";
+const Loading = React.lazy(() => import("./components/Loading"));
+
 export default function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <Routes>
-      {/* Route MainLayout */}
-      <Route element={<MainLayout />}>
-        {/* Error Pages */}
-        <Route path="*" element={<NotFound />} />
-        <Route path="/error400" element={<Error400 />} />
-        <Route path="/error401" element={<Error401 />} />
-        <Route path="/error403" element={<Error403 />} />
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        {/* Route MainLayout */}
+        <Route element={<MainLayout />}>
+          {/* Error Pages */}
+          <Route path="*" element={<NotFound />} />
+          <Route path="/error400" element={<Error400 />} />
+          <Route path="/error401" element={<Error401 />} />
+          <Route path="/error403" element={<Error403 />} />
 
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/customers" element={<Customers />} />
-      </Route>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
+        </Route>
 
-      {/* Route AuthLayout */}
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot" element={<Forgot />} />
-      </Route>
-    </Routes>
+        {/* Route AuthLayout */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
