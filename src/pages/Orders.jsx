@@ -21,21 +21,56 @@ export default function Orders() {
       </PageHeader>
 
       {showForm && (
-        <div className="bg-white p-4 rounded-lg shadow mb-4">
-          <h2 className="text-xl font-bold mb-3">Add Orders</h2>
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500/40 backdrop-blur-sm z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl border border-gray-100 w-[500px] relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-2 right-3 text-gray-500 hover:text-black text-xl"
+            >
+              ✕
+            </button>
 
-          <div className="grid grid-cols-2 gap-4">
-            <input type="text" placeholder="Order ID" className="border p-2 rounded" />
-            <input type="text" placeholder="Customer Name" className="border p-2 rounded" />
+            <h2 className="text-xl font-bold mb-4">Add Orders</h2>
 
-            <select className="border p-2 rounded">
-              <option>Pending</option>
-              <option>Completed</option>
-              <option>Cancelled</option>
-            </select>
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Order ID"
+                className="border p-2 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Customer Name"
+                className="border p-2 rounded"
+              />
 
-            <input type="number" placeholder="Total Price" className="border p-2 rounded" />
-            <input type="date" className="border p-2 rounded" />
+              <select className="border p-2 rounded">
+                <option>Pending</option>
+                <option>Completed</option>
+                <option>Cancelled</option>
+              </select>
+
+              <input
+                type="number"
+                placeholder="Total Price"
+                className="border p-2 rounded"
+              />
+              <input type="date" className="border p-2 rounded col-span-2" />
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => setShowForm(false)}
+                className="bg-gray-300 px-4 py-2 rounded mr-2"
+              >
+                Cancel
+              </button>
+              <button className="bg-biru text-white px-4 py-2 rounded">
+                Save
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -64,8 +99,8 @@ export default function Orders() {
                         order.status === "Completed"
                           ? "bg-green-100 text-green-500"
                           : order.status === "Pending"
-                          ? "bg-yellow-100 text-yellow-500"
-                          : "bg-red-100 text-red-500"
+                            ? "bg-yellow-100 text-yellow-500"
+                            : "bg-red-100 text-red-500"
                       }
                     `}
                   >

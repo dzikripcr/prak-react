@@ -21,20 +21,59 @@ export default function Customers() {
       </PageHeader>
 
       {showForm && (
-        <div className="bg-white p-4 rounded-lg shadow mb-4">
-          <h2 className="text-xl font-bold mb-3">Add Customer</h2>
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500/40 backdrop-blur-sm z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl border border-gray-100 w-[500px] relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-2 right-3 text-gray-400 hover:text-black text-xl"
+            >
+              ✕
+            </button>
 
-          <div className="grid grid-cols-2 gap-4">
-            <input type="text" placeholder="Customer ID" className="border p-2 rounded" />
-            <input type="text" placeholder="Customer Name" className="border p-2 rounded" />
-            <input type="email" placeholder="Email" className="border p-2 rounded" />
-            <input type="text" placeholder="Phone" className="border p-2 rounded" />
+            <h2 className="text-xl font-bold mb-4">Add Customer</h2>
 
-            <select className="border p-2 rounded">
-              <option>Bronze</option>
-              <option>Silver</option>
-              <option>Gold</option>
-            </select>
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Customer ID"
+                className="border p-2 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Customer Name"
+                className="border p-2 rounded"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="border p-2 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Phone"
+                className="border p-2 rounded"
+              />
+
+              <select className="border p-2 rounded col-span-2">
+                <option>Bronze</option>
+                <option>Silver</option>
+                <option>Gold</option>
+              </select>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex justify-end mt-5">
+              <button
+                onClick={() => setShowForm(false)}
+                className="bg-gray-300 px-4 py-2 rounded mr-2"
+              >
+                Cancel
+              </button>
+              <button className="bg-biru text-white px-4 py-2 rounded">
+                Save
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -65,8 +104,8 @@ export default function Customers() {
                         customer.loyalty === "Gold"
                           ? "bg-yellow-100 text-yellow-700"
                           : customer.loyalty === "Silver"
-                          ? "bg-gray-200 text-gray-700"
-                          : "bg-orange-100 text-orange-700"
+                            ? "bg-gray-200 text-gray-700"
+                            : "bg-orange-100 text-orange-700"
                       } 
                     `}
                   >
