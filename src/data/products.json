@@ -1,0 +1,274 @@
+{
+  "produk": [
+    {
+      "id": 1,
+      "title": "Laptop Gaming RTX",
+      "code": "PRD001",
+      "category": "Elektronik",
+      "brand": "Asus",
+      "price": 18500000,
+      "stock": 12
+    },
+    {
+      "id": 2,
+      "title": "Smartphone AMOLED 5G",
+      "code": "PRD002",
+      "category": "Elektronik",
+      "brand": "Samsung",
+      "price": 7200000,
+      "stock": 25
+    },
+    {
+      "id": 3,
+      "title": "Wireless Mouse",
+      "code": "PRD003",
+      "category": "Aksesoris",
+      "brand": "Logitech",
+      "price": 250000,
+      "stock": 50
+    },
+    {
+      "id": 4,
+      "title": "Mechanical Keyboard RGB",
+      "code": "PRD004",
+      "category": "Aksesoris",
+      "brand": "Razer",
+      "price": 1350000,
+      "stock": 18
+    },
+    {
+      "id": 5,
+      "title": "Monitor 27 Inch IPS",
+      "code": "PRD005",
+      "category": "Elektronik",
+      "brand": "LG",
+      "price": 3200000,
+      "stock": 10
+    },
+    {
+      "id": 6,
+      "title": "Smartwatch Sport",
+      "code": "PRD006",
+      "category": "Wearable",
+      "brand": "Xiaomi",
+      "price": 850000,
+      "stock": 40
+    },
+    {
+      "id": 7,
+      "title": "Bluetooth Speaker",
+      "code": "PRD007",
+      "category": "Audio",
+      "brand": "JBL",
+      "price": 650000,
+      "stock": 30
+    },
+    {
+      "id": 8,
+      "title": "Headset Gaming",
+      "code": "PRD008",
+      "category": "Audio",
+      "brand": "HyperX",
+      "price": 980000,
+      "stock": 22
+    },
+    {
+      "id": 9,
+      "title": "External SSD 1TB",
+      "code": "PRD009",
+      "category": "Storage",
+      "brand": "SanDisk",
+      "price": 1750000,
+      "stock": 15
+    },
+    {
+      "id": 10,
+      "title": "Flashdisk 64GB",
+      "code": "PRD010",
+      "category": "Storage",
+      "brand": "Kingston",
+      "price": 95000,
+      "stock": 100
+    },
+    {
+      "id": 11,
+      "title": "Kamera Mirrorless",
+      "code": "PRD011",
+      "category": "Kamera",
+      "brand": "Canon",
+      "price": 12400000,
+      "stock": 7
+    },
+    {
+      "id": 12,
+      "title": "Tripod Kamera",
+      "code": "PRD012",
+      "category": "Fotografi",
+      "brand": "Takara",
+      "price": 275000,
+      "stock": 35
+    },
+    {
+      "id": 13,
+      "title": "Printer Inkjet",
+      "code": "PRD013",
+      "category": "Perangkat Kantor",
+      "brand": "Epson",
+      "price": 2150000,
+      "stock": 9
+    },
+    {
+      "id": 14,
+      "title": "Router WiFi Dual Band",
+      "code": "PRD014",
+      "category": "Networking",
+      "brand": "TP-Link",
+      "price": 550000,
+      "stock": 28
+    },
+    {
+      "id": 15,
+      "title": "Kipas Angin Mini USB",
+      "code": "PRD015",
+      "category": "Elektronik",
+      "brand": "Miyako",
+      "price": 120000,
+      "stock": 60
+    },
+    {
+      "id": 16,
+      "title": "Rice Cooker Digital",
+      "code": "PRD016",
+      "category": "Peralatan Rumah",
+      "brand": "Philips",
+      "price": 780000,
+      "stock": 14
+    },
+    {
+      "id": 17,
+      "title": "Blender Portable",
+      "code": "PRD017",
+      "category": "Peralatan Rumah",
+      "brand": "Mito",
+      "price": 340000,
+      "stock": 20
+    },
+    {
+      "id": 18,
+      "title": "Vacuum Cleaner",
+      "code": "PRD018",
+      "category": "Peralatan Rumah",
+      "brand": "Sharp",
+      "price": 1450000,
+      "stock": 11
+    },
+    {
+      "id": 19,
+      "title": "Sepatu Running",
+      "code": "PRD019",
+      "category": "Fashion",
+      "brand": "Nike",
+      "price": 1650000,
+      "stock": 26
+    },
+    {
+      "id": 20,
+      "title": "Jaket Hoodie",
+      "code": "PRD020",
+      "category": "Fashion",
+      "brand": "Uniqlo",
+      "price": 450000,
+      "stock": 33
+    },
+    {
+      "id": 21,
+      "title": "Tas Ransel Laptop",
+      "code": "PRD021",
+      "category": "Fashion",
+      "brand": "Eiger",
+      "price": 620000,
+      "stock": 19
+    },
+    {
+      "id": 22,
+      "title": "Jam Tangan Casual",
+      "code": "PRD022",
+      "category": "Fashion",
+      "brand": "Casio",
+      "price": 890000,
+      "stock": 17
+    },
+    {
+      "id": 23,
+      "title": "Botol Minum Stainless",
+      "code": "PRD023",
+      "category": "Lifestyle",
+      "brand": "LocknLock",
+      "price": 180000,
+      "stock": 42
+    },
+    {
+      "id": 24,
+      "title": "Kursi Gaming",
+      "code": "PRD024",
+      "category": "Furniture",
+      "brand": "Fantech",
+      "price": 2450000,
+      "stock": 8
+    },
+    {
+      "id": 25,
+      "title": "Meja Kerja Minimalis",
+      "code": "PRD025",
+      "category": "Furniture",
+      "brand": "IKEA",
+      "price": 1350000,
+      "stock": 13
+    },
+    {
+      "id": 26,
+      "title": "Lampu LED Smart",
+      "code": "PRD026",
+      "category": "Smart Home",
+      "brand": "Bardi",
+      "price": 210000,
+      "stock": 45
+    },
+    {
+      "id": 27,
+      "title": "Power Bank 20000mAh",
+      "code": "PRD027",
+      "category": "Elektronik",
+      "brand": "Anker",
+      "price": 560000,
+      "stock": 31
+    },
+    {
+      "id": 28,
+      "title": "Charger Fast Charging",
+      "code": "PRD028",
+      "category": "Aksesoris",
+      "brand": "Baseus",
+      "price": 150000,
+      "stock": 55
+    },
+    {
+      "id": 29,
+      "title": "Tablet Android",
+      "code": "PRD029",
+      "category": "Elektronik",
+      "brand": "Huawei",
+      "price": 4100000,
+      "stock": 16
+    },
+    {
+      "id": 30,
+      "title": "Drone Kamera HD",
+      "code": "PRD030",
+      "category": "Gadget",
+      "brand": "DJI",
+      "price": 8700000,
+      "stock": 6
+    }
+  ]
+}

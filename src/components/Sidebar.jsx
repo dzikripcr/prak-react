@@ -1,7 +1,8 @@
+import { AiOutlineInbox } from "react-icons/ai"; 
 import { AiFillCustomerService } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdDashboard } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MdError } from "react-icons/md";
 
 export default function Sidebar() {
@@ -53,6 +54,12 @@ export default function Sidebar() {
             <NavLink id="menu-3" to="/Customers" className={menuClass}>
               <AiFillCustomerService className="mr-4 text-xl" />
               <span>Customers</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink id="menu-3" to="/Products" className={menuClass}>
+              <AiOutlineInbox className="mr-4 text-xl" />
+              <span>Products</span>
             </NavLink>
           </li>
           <li>

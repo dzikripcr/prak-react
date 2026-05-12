@@ -20,9 +20,12 @@ const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 // import AuthLayout from "./layouts/AuthLayout";
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
+
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Forgot from "./pages/auth/Forgot";
+const Product = React.lazy(() => import("./pages/Products"))
 
 // import Loading from "./components/Loading";
 const Loading = React.lazy(() => import("./components/Loading"));
@@ -43,6 +46,8 @@ export default function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
         </Route>
 
         {/* Route AuthLayout */}

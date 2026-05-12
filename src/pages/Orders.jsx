@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import ordersData from "../components/order.JSON";
+import ordersData from "../data/order.JSON";
 
 export default function Orders() {
   const [orders] = useState(ordersData);

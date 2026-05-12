@@ -1,9 +1,10 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import customersData from "../components/customer.JSON";
+import customersData from "../data/customer.JSON";
 
 export default function Customers() {
   const [customers] = useState(customersData);
+  
   const [showForm, setShowForm] = useState(false);
 
   return (
