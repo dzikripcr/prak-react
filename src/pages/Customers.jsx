@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import customersData from "../data/customer.JSON";
+import customersData from "../data/customer.json";
 
 export default function Customers() {
   const [customers] = useState(customersData);
