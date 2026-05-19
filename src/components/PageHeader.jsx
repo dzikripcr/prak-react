@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 export default function PageHeader(props) {
     const [showModal, setShowModal] = useState(false);
@@ -15,9 +16,7 @@ export default function PageHeader(props) {
             <div id="action-button">
                     {props.children}
 
-                <button id="add-button" className="bg-hijau text-white px-4 py-2 rounded-lg" onFocus={() => setShowModal(true)}>
-		                Cari Menu
-		            </button>
+                    <Button onFocus={() => setShowModal(true)} type="success">Cari menu</Button>
             </div>
             {/* Modal */}
             {showModal && (

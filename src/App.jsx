@@ -25,6 +25,7 @@ const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Forgot from "./pages/auth/Forgot";
+const Components = React.lazy(() => import("./pages/Components"))
 const Product = React.lazy(() => import("./pages/Products"))
 
 // import Loading from "./components/Loading";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/products" element={<Product />} />
+          <Route path="/components" element={<Components />} />
           <Route path="/products/:id" element={<ProductDetail />} />
         </Route>
 
