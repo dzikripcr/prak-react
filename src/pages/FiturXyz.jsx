@@ -9,5 +9,6 @@ export default function FiturXyz() {
         </button>
       </PageHeader>
       <p>Ini adalah halaman Fitur XYZ</p>
+      
       </div>
   )}
