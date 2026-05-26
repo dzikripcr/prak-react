@@ -19,15 +19,13 @@ const Error403 = React.lazy(() => import("./pages/Error403"));
 const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 // import AuthLayout from "./layouts/AuthLayout";
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
-
 const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
-
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Forgot from "./pages/auth/Forgot";
 const Components = React.lazy(() => import("./pages/Components"))
 const Product = React.lazy(() => import("./pages/Products"))
-
+const FiturXyz = React.lazy(() => import("./pages/FiturXyz"))
 // import Loading from "./components/Loading";
 const Loading = React.lazy(() => import("./components/Loading"));
 
@@ -49,6 +47,7 @@ export default function App() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/products" element={<Product />} />
           <Route path="/components" element={<Components />} />
+          <Route path="/fiturxyz" element={<FiturXyz />} />
           <Route path="/products/:id" element={<ProductDetail />} />
         </Route>
 

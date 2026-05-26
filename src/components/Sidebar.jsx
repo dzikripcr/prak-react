@@ -69,6 +69,12 @@ export default function Sidebar() {
             </NavLink>
           </li>
           <li>
+            <NavLink id="menu-3" to="/FiturXyz" className={menuClass}>
+              <AiOutlineInbox className="mr-4 text-xl" />
+              <span>Fitur XYZ</span>
+            </NavLink>
+          </li>
+          <li>
             <NavLink id="menu-4" to="/error400" className={menuClass}>
               <MdError className="mr-4 text-xl" /> <span>Error 400</span>
             </NavLink>
