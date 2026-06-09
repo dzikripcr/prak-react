@@ -1,9 +1,11 @@
+import { CgNotes } from "react-icons/cg"; 
 import { AiOutlineInbox } from "react-icons/ai"; 
 import { AiFillCustomerService } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdOutlineFeaturedVideo } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { MdError } from "react-icons/md";
+import { CgComponents } from "react-icons/cg";
 
 export default function Sidebar() {
   const menuClass = ({ isActive }) =>
@@ -63,14 +65,20 @@ export default function Sidebar() {
             </NavLink>
           </li>
           <li>
+            <NavLink id="menu-3" to="/Notes" className={menuClass}>
+              <CgNotes className="mr-4 text-xl" />
+              <span>Notes</span>
+            </NavLink>
+          </li>
+          <li>
             <NavLink id="menu-3" to="/Components" className={menuClass}>
-              <AiOutlineInbox className="mr-4 text-xl" />
+              <CgComponents className="mr-4 text-xl" />
               <span>Components</span>
             </NavLink>
           </li>
           <li>
             <NavLink id="menu-3" to="/FiturXyz" className={menuClass}>
-              <AiOutlineInbox className="mr-4 text-xl" />
+              <MdOutlineFeaturedVideo className="mr-4 text-xl" />
               <span>Fitur XYZ</span>
             </NavLink>
           </li>
