@@ -6,8 +6,11 @@ import { MdDashboard, MdOutlineFeaturedVideo } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { MdError } from "react-icons/md";
 import { CgComponents } from "react-icons/cg";
+import useAuth from "../hooks/useAuth";
 
 export default function Sidebar() {
+  const { profile } = useAuth();
+  const isAdmin = profile?.role === "admin";
   const menuClass = ({ isActive }) =>
     `flex cursor-pointer items-center rounded-xl p-4  space-x-2
         ${
@@ -41,9 +44,9 @@ export default function Sidebar() {
       <div id="sidebar-menu" className="mt-10">
         <ul id="menu-list" className="space-y-3">
           <li>
-            <NavLink id="menu-1" to="/" className={menuClass}>
+            <NavLink id="menu-1" to={isAdmin ? "/admin/dashboard" : "/member/dashboard"} className={menuClass}>
               <MdDashboard className="mr-4 text-xl" />
-              <span>Dashbord</span>
+              <span>Dashboard</span>
             </NavLink>
           </li>
           <li>
@@ -52,51 +55,52 @@ export default function Sidebar() {
               <span>Orders</span>
             </NavLink>
           </li>
-          <li>
+          {isAdmin && <li>
             <NavLink id="menu-3" to="/Customers" className={menuClass}>
               <AiFillCustomerService className="mr-4 text-xl" />
               <span>Customers</span>
             </NavLink>
-          </li>
+          </li>}
           <li>
             <NavLink id="menu-3" to="/Products" className={menuClass}>
               <AiOutlineInbox className="mr-4 text-xl" />
               <span>Products</span>
             </NavLink>
           </li>
-          <li>
+          {isAdmin && <li>
             <NavLink id="menu-3" to="/Notes" className={menuClass}>
               <CgNotes className="mr-4 text-xl" />
               <span>Notes</span>
             </NavLink>
-          </li>
-          <li>
+          </li>}
+          {isAdmin && <li>
             <NavLink id="menu-3" to="/Components" className={menuClass}>
               <CgComponents className="mr-4 text-xl" />
               <span>Components</span>
             </NavLink>
           </li>
-          <li>
+          }
+          {isAdmin && <li>
             <NavLink id="menu-3" to="/FiturXyz" className={menuClass}>
               <MdOutlineFeaturedVideo className="mr-4 text-xl" />
               <span>Fitur XYZ</span>
             </NavLink>
-          </li>
-          <li>
+          </li>}
+          {isAdmin && <li>
             <NavLink id="menu-4" to="/error400" className={menuClass}>
               <MdError className="mr-4 text-xl" /> <span>Error 400</span>
             </NavLink>
-          </li>
-          <li>
+          </li>}
+          {isAdmin && <li>
             <NavLink id="menu-5" to="/error401" className={menuClass}>
               <MdError className="mr-4 text-xl" /> <span>Error 401</span>
             </NavLink>
-          </li>
-          <li>
+          </li>}
+          {isAdmin && <li>
             <NavLink id="menu-6" to="/error403" className={menuClass}>
               <MdError className="mr-4 text-xl" /> <span>Error 403</span>
             </NavLink>
-          </li>
+          </li>}
         </ul>
       </div>
 

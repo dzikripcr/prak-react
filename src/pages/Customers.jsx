@@ -1,17 +1,57 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import PageHeader from "../components/PageHeader";
-import customersData from "../data/customer.json";
+import { commerceAPI } from "../services/commerceAPI";
 
 export default function Customers() {
-  const [customers] = useState(customersData);
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   
   const [showForm, setShowForm] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [form, setForm] = useState({ name: "", phone: "", role: "member", tier: "bronze" });
+
+  useEffect(() => {
+    const loadCustomers = async () => {
+      try {
+        setCustomers(await commerceAPI.getCustomers());
+      } catch (err) {
+        setError(err.message || "Gagal memuat customer.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCustomers();
+  }, []);
+
+  const handleEdit = (customer) => {
+    setSelectedCustomer(customer);
+    setForm({ name: customer.name, phone: customer.phone || "", role: customer.role, tier: customer.tier });
+    setShowForm(true);
+  };
+
+  const handleSave = async () => {
+    if (!selectedCustomer) return;
+    try {
+      setLoading(true);
+      await commerceAPI.updateCustomer(selectedCustomer.id, form);
+      setCustomers(customers.map((customer) => customer.id === selectedCustomer.id ? { ...customer, ...form } : customer));
+      setShowForm(false);
+      setSelectedCustomer(null);
+    } catch (err) {
+      setError(err.message || "Gagal memperbarui customer.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div id="dashboard-container">
       <PageHeader title="Customers" breadcrumb="Customers / Customer List">
         <button
-          onClick={() => setShowForm(true)}
+          onClick={() => { setSelectedCustomer(null); setShowForm(false); setError("Customer dibuat melalui halaman Register agar akun Auth dan profile dibuat dengan aman."); }}
           className="bg-biru text-white px-4 py-2 rounded-lg mr-2"
         >
           Add Customer
@@ -32,34 +72,40 @@ export default function Customers() {
               ✕
             </button>
 
-            <h2 className="text-xl font-bold mb-4">Add Customer</h2>
+            <h2 className="text-xl font-bold mb-4">Edit Customer</h2>
 
             <div className="grid grid-cols-2 gap-4">
               <input
                 type="text"
+                value={selectedCustomer?.id || ""}
+                readOnly
                 placeholder="Customer ID"
                 className="border p-2 rounded"
               />
               <input
                 type="text"
+                value={form.name}
+                onChange={(event) => setForm({ ...form, name: event.target.value })}
                 placeholder="Customer Name"
                 className="border p-2 rounded"
               />
               <input
-                type="email"
-                placeholder="Email"
-                className="border p-2 rounded"
-              />
-              <input
                 type="text"
+                value={form.phone}
+                onChange={(event) => setForm({ ...form, phone: event.target.value })}
                 placeholder="Phone"
                 className="border p-2 rounded"
               />
 
-              <select className="border p-2 rounded col-span-2">
-                <option>Bronze</option>
-                <option>Silver</option>
-                <option>Gold</option>
+              <select value={form.role} onChange={(event) => setForm({ ...form, role: event.target.value })} className="border p-2 rounded">
+                <option value="member">Member</option>
+                <option value="admin">Admin</option>
+              </select>
+              <select value={form.tier} onChange={(event) => setForm({ ...form, tier: event.target.value })} className="border p-2 rounded">
+                <option value="bronze">Bronze</option>
+                <option value="silver">Silver</option>
+                <option value="gold">Gold</option>
+                <option value="platinum">Platinum</option>
               </select>
             </div>
 
@@ -71,7 +117,7 @@ export default function Customers() {
               >
                 Cancel
               </button>
-              <button className="bg-biru text-white px-4 py-2 rounded">
+              <button onClick={handleSave} disabled={loading} className="bg-biru text-white px-4 py-2 rounded">
                 Save
               </button>
             </div>
@@ -88,35 +134,40 @@ export default function Customers() {
               <th className="text-left p-2">Email</th>
               <th className="text-left p-2">Phone</th>
               <th className="text-left p-2">Loyalty</th>
+              <th className="text-left p-2">Aksi</th>
             </tr>
           </thead>
 
           <tbody>
             {customers.map((customer) => (
-              <tr key={customer.customerId} className="border-b">
-                <td className="p-2">{customer.customerId}</td>
-                <td className="p-2">{customer.customerName}</td>
-                <td className="p-2">{customer.email}</td>
-                <td className="p-2">{customer.phone}</td>
+              <tr key={customer.id} className="border-b">
+                <td className="p-2">{customer.id}</td>
+                <td className="p-2">{customer.name}</td>
+                <td className="p-2">-</td>
+                <td className="p-2">{customer.phone || "-"}</td>
                 <td className="p-2">
                   <span
                     className={`px-3 py-1 rounded-full text-sm font-semibold
                       ${
-                        customer.loyalty === "Gold"
+                        customer.tier === "gold"
                           ? "bg-yellow-100 text-yellow-700"
-                          : customer.loyalty === "Silver"
+                          : customer.tier === "silver"
                             ? "bg-gray-200 text-gray-700"
                             : "bg-orange-100 text-orange-700"
                       } 
                     `}
                   >
-                    {customer.loyalty}
+                    {customer.tier}
                   </span>
                 </td>
+                <td className="p-2"><button onClick={() => handleEdit(customer)} className="text-blue-600">Edit</button></td>
               </tr>
             ))}
           </tbody>
         </table>
+        {loading && <p className="p-2 text-gray-500">Loading...</p>}
+        {!loading && error && <p className="p-2 text-red-600">{error}</p>}
+        {!loading && !error && customers.length === 0 && <p className="p-2 text-gray-500">Belum ada customer.</p>}
       </div>
     </div>
   );

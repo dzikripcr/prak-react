@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
 import { ImSpinner2 } from "react-icons/im";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { authAPI } from "../../services/authAPI";
 
 export default function Login() {
   /* navigate, state & handleChange*/
@@ -29,31 +29,14 @@ export default function Login() {
     setLoading(true);
     setError(false);
 
-    axios
-      .post("https://dummyjson.com/user/login", {
-        username: dataForm.email,
-        password: dataForm.password,
-      })
-      .then((response) => {
-        // Jika status bukan 200, tampilkan pesan error
-        if (response.status !== 200) {
-          setError(response.data.message);
-          return;
-        }
-
-        // Redirect ke dashboard jika login sukses
-        navigate("/");
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError(err.response.data.message || "An error occurred");
-        } else {
-          setError(err.message || "An unknown error occurred");
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      const { profile } = await authAPI.login(dataForm.email, dataForm.password);
+      navigate(profile.role === "admin" ? "/admin/dashboard" : "/orders");
+    } catch (err) {
+      setError(err.message || "Login gagal.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   /* error & loading status */
@@ -118,6 +101,10 @@ export default function Login() {
         >
           Login
         </button>
+        <div className="mt-5 flex justify-between text-sm">
+          <Link to="/register" className="text-green-600 hover:text-green-700">Register</Link>
+          <Link to="/forgot" className="text-green-600 hover:text-green-700">Lupa Password?</Link>
+        </div>
       </form>
     </div>
   );
